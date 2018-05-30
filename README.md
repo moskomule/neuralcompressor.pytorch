@@ -8,11 +8,28 @@ The status of this repository is *WORK IN PROGRESS*.
 
 * `Python >= 3.6`
 * `PyTorch >= 4.0`
-* (`torchtext`)
+* `torchtext` 
+
+```
+git clone https://github.com/pytorch/text.git
+cd text
+pip install -e .
+``
 
 # Results
+## Qualitative Results
 
-# Plan
+`glove.py` compresses GloVe-6b 300 dim word vectors into codings.
 
-* [ ] Compress Glove
-* [ ] Add IMDB sentimental analysis example
+```
+python glove.py --epochs 10 --batch_size 128 --num_component 8 --num_codevec 8 --sample_words dog dogs man woman king queen
+```
+
+```
+>>>      dog: [3, 1, 2, 0, 3, 0, 0, 7]
+>>>     dogs: [3, 1, 1, 1, 0, 0, 0, 3]
+>>>      man: [3, 1, 2, 2, 3, 1, 0, 0]
+>>>    woman: [3, 1, 2, 1, 3, 2, 0, 4]
+>>>     king: [3, 1, 5, 3, 3, 2, 1, 6]
+>>>    queen: [3, 1, 4, 3, 3, 2, 0, 4]
+```
