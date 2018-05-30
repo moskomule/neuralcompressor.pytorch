@@ -14,7 +14,7 @@ The status of this repository is *WORK IN PROGRESS*.
 git clone https://github.com/pytorch/text.git
 cd text
 pip install -e .
-``
+```
 
 # Results
 ## Qualitative Results
@@ -26,7 +26,7 @@ python glove.py --epochs 10 --batch_size 128 --num_component 8 --num_codevec 8 -
 ```
 
 
-```text
+```
   dog: [3, 1, 2, 5, 3, 0, 0, 7]
  dogs: [3, 1, 1, 1, 3, 0, 0, 3]
   man: [3, 1, 2, 2, 3, 6, 0, 0]
