@@ -8,11 +8,25 @@ The status of this repository is *WORK IN PROGRESS*.
 
 * `Python >= 3.6`
 * `PyTorch >= 4.0`
+* `tensorboard-pytorch`
+
+```
+pip install tensorboardX
+```
+
 * `torchtext` 
 
 ```
 git clone https://github.com/pytorch/text.git
 cd text
+pip install -e .
+```
+
+* homura
+
+```
+git clone https://github.com/moskomule/homura.git
+cd homura
 pip install -e .
 ```
 

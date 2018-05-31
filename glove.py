@@ -42,9 +42,9 @@ def main(epochs, batch_size, num_component, num_codevec, words):
                                Decoder(emb_dim, num_component, num_codevec))
     optimizer = torch.optim.Adam(compressor.parameters(), lr=1e-4)
 
-    c = callbacks.CallbackList(callbacks.LossCallback(),
-                               callbacks.WeightSave("checkpoints"),
-                               callbacks.ParameterReporterCallback(reporter.TensorBoardReporter()))
+    c = callbacks.CallbackList(callbacks.WeightSave("checkpoints"),
+                               callbacks.ReporterCallback(reporter.TensorBoardReporter(),
+                                                          callbacks.LossCallback()))
 
     trainer = CTrainer(compressor, optimizer, F.mse_loss, callbacks=c)
     codes = Code(compressor[0], glove)
