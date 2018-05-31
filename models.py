@@ -17,9 +17,11 @@ class Encoder(nn.Module):
         x = [F.softplus(m(x)) for m in self.out]
         return [GumbelSoftmax(self._temperature, p).rsample() for p in x]
 
-    def get_code(self, input):
+    def get_code(self, input, iteration=10):
         with torch.no_grad():
-            probs = torch.stack(self(input))
+            # Gumbel softmax works in a stochastic manner, needs to be run several times to
+            # get more accurate codes
+            probs = sum([torch.stack(self(input)) for _ in range(iteration)])
             # num_component x batch x num_codevec
             return probs.transpose(0, 1).argmax(dim=2)
 
